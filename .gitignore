@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.idea
+debug_logs
+vec_logs
+*.egg-info
+datasets
+results
+terminal_logs/*.log
+terminal_logs/trash
