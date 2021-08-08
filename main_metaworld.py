@@ -49,6 +49,7 @@ if __name__ == "__main__":
 	parser.add_argument("--policy_noise", default=0.2)              # Noise added to target policy during critic update
 	parser.add_argument("--noise_clip", default=0.5)                # Range to clip target policy noise
 	parser.add_argument("--policy_freq", default=2, type=int)       # Frequency of delayed policy updates
+	parser.add_argument("--save_dir", default='./logs', type=str)
 	parser.add_argument("--save_model", action="store_true")        # Save model and optimizer parameters
 	parser.add_argument("--load_model", default="")                 # Model load file name, "" doesn't load, "default" uses file_name
 	args = parser.parse_args()
@@ -151,6 +152,6 @@ if __name__ == "__main__":
 		# Evaluate episode
 		if (t + 1) % args.eval_freq == 0:
 			evaluations.append(eval_policy(policy, eval_env))
-			np.save(f"./results/{file_name}", evaluations)
+			np.save(os.path.join(args.save_dir, file_name), evaluations)
 			if args.save_model:
 				policy.save(f"./models/{file_name}")
