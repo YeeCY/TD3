@@ -52,7 +52,7 @@ declare -a seeds=(0 1 2 3)
 
 for env_name in "${env_names[@]}"; do
   for seed in "${seeds[@]}"; do
-    export CUDA_VISIBLE_DEVICES="$(($seed % 2))"
+    export CUDA_VISIBLE_DEVICES=$seed
     nohup \
     python $PROJECT_DIR/main_metaworld.py \
       --env_name $env_name \
