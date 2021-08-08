@@ -59,8 +59,9 @@ if __name__ == "__main__":
 	print(f"Policy: {args.policy}, Env: {args.env_name}, Seed: {args.seed}")
 	print("---------------------------------------")
 
-	if not os.path.exists("./results"):
-		os.makedirs("./results")
+	# if not os.path.exists("./results"):
+	# 	os.makedirs("./results")
+	os.makedirs(args.save_dir, exist_ok=True)
 
 	if args.save_model and not os.path.exists("./models"):
 		os.makedirs("./models")
